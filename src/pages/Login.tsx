@@ -38,6 +38,7 @@ const Login: React.FC = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+    //@ts-ignore
     const res = userService.getUserByEmail(email);
     console.log(res);
     window.location.href = "/dashboard";

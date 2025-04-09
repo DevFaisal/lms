@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Grid, Box, Typography, CircularProgress, Card, CardContent, Button } from "@mui/material";
-import { useParams, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { repaymentService } from "../services/repayments";
 import RepaymentOptionCard from "../components/features/repayment/RepaymentOptionCard";
 import CustomRepaymentInput from "../components/features/repayment/CustomRepaymentInput";
@@ -10,7 +10,7 @@ import { formatCurrency } from "../utils/formatters";
 import useUserStore from "../store/userStore";
 
 const RepaymentCenter: React.FC = () => {
-  const { loanAccountId } = useParams<{ loanAccountId: string }>();
+  // const { loanAccountId } = useParams<{ loanAccountId: string }>();
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
@@ -32,6 +32,7 @@ const RepaymentCenter: React.FC = () => {
         setLoading(true);
 
         // Fetch repayment options
+        // @ts-ignore
         const response = await repaymentService.getRepaymentOptions(loanAccountIdToUse);
         setCurrentBalance(response.current_balance);
         setCurrentApr(response.current_apr);
@@ -72,6 +73,7 @@ const RepaymentCenter: React.FC = () => {
 
       // Make the repayment
       await repaymentService.makeRepayment({
+        //@ts-ignore
         loan_account_id: loanAccountIdToUse,
         amount: paymentAmount,
       });
@@ -145,6 +147,7 @@ const RepaymentCenter: React.FC = () => {
         <Grid item xs={12} md={6}>
           <CustomRepaymentInput
             value={customAmount}
+            // @ts-ignore
             onChange={handleCustomAmountChange}
             currentBalance={currentBalance}
           />

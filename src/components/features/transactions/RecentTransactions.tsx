@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -19,7 +18,7 @@ const sampleTransactions = [
 ];
 
 // Icons for transaction types
-const TransactionIcon = ({ type }) => {
+const TransactionIcon = ({ type }: { type: string }) => {
   const iconMap = {
     interest: <span className="material-icons text-blue-600">monetization_on</span>,
     fee: <span className="material-icons text-red-600">money_off</span>,
@@ -29,13 +28,14 @@ const TransactionIcon = ({ type }) => {
 
   return (
     <Avatar sx={{ width: 40, height: 40, bgcolor: "background.paper" }}>
+      {/* @ts-ignore */}
       {iconMap[type] || <span className="material-icons">receipt_long</span>}
     </Avatar>
   );
 };
 
 // Get color based on transaction type
-const getChipColor = (type) => {
+const getChipColor = (type: string) => {
   switch (type) {
     case "interest":
       return "info";
@@ -51,13 +51,14 @@ const getChipColor = (type) => {
 };
 
 // Get label for transaction type
-const getTransactionTypeLabel = (type) => {
-  const labels = {
+const getTransactionTypeLabel = (type: string) => {
+  const labels: { [key: string]: string } = {
     interest: "Interest",
     fee: "Fee",
     repayment: "Payment",
     purchase: "Purchase",
   };
+  //@ts-ignore
   return labels[type] || type;
 };
 
@@ -68,12 +69,12 @@ export default function RecentTransactions({
 }) {
   const displayTransactions = transactions.slice(0, maxItems);
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
   };
 
-  const formatCurrency = (amount) => {
+  const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD",

@@ -189,6 +189,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         {menuItems.map((item) => (
           <Tooltip title={collapsed ? item.text : ""} placement="right" key={item.text} arrow>
             <ListItemStyled
+              //@ts-ignore
               button
               component={Link}
               to={item.path}

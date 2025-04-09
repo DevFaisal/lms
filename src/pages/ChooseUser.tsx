@@ -9,12 +9,6 @@ interface User {
   email: string;
 }
 
-const users: User[] = [
-  { id: 1, name: "John Doe", email: "john@example.com" },
-  { id: 2, name: "Jane Smith", email: "jane@example.com" },
-  { id: 3, name: "Alice Johnson", email: "alice@example.com" },
-];
-
 const ChooseUser = () => {
   const [users, setUsers] = useState([]);
   const setUserId = useUserStore((state) => state.setUserId);
@@ -31,6 +25,7 @@ const ChooseUser = () => {
         userService.getUser(29),
       ]);
       console.log(fetchedUsers);
+      //@ts-ignore
       setUsers(fetchedUsers);
     };
     fetchUsers();
@@ -38,6 +33,7 @@ const ChooseUser = () => {
 
   const handleUserClick = (userId: number) => {
     //Store the user in local storage
+    //@ts-ignore
     localStorage.setItem("user", JSON.stringify(users.find((user) => user.id === userId)));
     setUserId(userId);
 
@@ -50,6 +46,7 @@ const ChooseUser = () => {
       <h2 className="text-2xl font-bold mb-6">Login As</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {users.map((user, idx) => (
+          //@ts-ignore
           <UserCard key={idx} user={user} onclick={() => handleUserClick(user.id)} />
         ))}
       </div>

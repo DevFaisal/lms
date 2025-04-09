@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Card, CardContent, Typography, Grid } from '@mui/material';
+import { Box, Button, Card, CardContent, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import PaymentIcon from '@mui/icons-material/Payment';
 import LockIcon from '@mui/icons-material/Lock';
