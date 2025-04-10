@@ -19,11 +19,7 @@ const ChooseUser = () => {
     const fetchUsers = async () => {
       //clear local storage
       localStorage.clear();
-      const fetchedUsers = await Promise.all([
-        userService.getUser(26),
-        userService.getUser(28),
-        userService.getUser(29),
-      ]);
+      const fetchedUsers = await Promise.all([userService.getUser(2), userService.getUser(3), userService.getUser(4)]);
       console.log(fetchedUsers);
       //@ts-ignore
       setUsers(fetchedUsers);

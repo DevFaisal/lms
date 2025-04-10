@@ -1,7 +1,8 @@
 import axios from "axios";
 
 // Base URL for the API
-const API_BASE_URL = "http://ec2-3-8-134-165.eu-west-2.compute.amazonaws.com:8000/api/v1";
+// const API_BASE_URL = "http://ec2-3-8-134-165.eu-west-2.compute.amazonaws.com:8000/api/v1";
+const API_BASE_URL = "https://www.brokerless.online/api/v1";
 
 // Create axios instance with default config
 const api = axios.create({
